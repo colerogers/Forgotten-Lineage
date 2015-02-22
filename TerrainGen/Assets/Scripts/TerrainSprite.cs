@@ -6,27 +6,27 @@ public class TerrainSprite : MonoBehaviour {
 
 	public int x;
   public int y;
-  public string path;
-  //private bool drawn = false;
-  //private int size = 100;
+  public Sprite sprite;
+  public int spriteSize;
   
-  public TerrainSprite(int newX, int newY, string newPath)
+  public TerrainSprite(int newX, int newY, Sprite newSprite, int newSpriteSize)
   {
     x = newX;
     y = newY;
-    path = newPath;
-    //drawn = false;
+    sprite = newSprite;
+    spriteSize = newSpriteSize;
   }
   
   public void DrawSprite()
   {
-    
-    // draw sprite
-    /*SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
-    Sprite sprite = new Sprite();
-    Texture2D texture = Resources.Load(path, typeof(Texture2D))
-    sprite = Sprite.Create(texture, new Rect(0, 0, size, size), new Vector2(x, y), 100.0f);
+    string name = "Terrain(" + x.ToString() + "," + y.ToString() + ")";
+    GameObject go = new GameObject(name);
+    Instantiate(go, transform.position, Quaternion.identity);
+    SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
     renderer.sprite = sprite;
-    drawn = true;*/
+    Transform t = go.GetComponent<Transform>();
+    float xpos = x * spriteSize;
+    float ypos = y * spriteSize;
+    t.position = new Vector3(xpos, ypos, 0);
   }
 }
