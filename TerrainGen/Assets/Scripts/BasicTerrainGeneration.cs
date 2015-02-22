@@ -3,14 +3,14 @@ using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
-public class TerrainGeneration : MonoBehaviour {
+public class BasicTerrainGeneration : MonoBehaviour {
   
   public Sprite sprite1;
   public int worldSize = 128;
   public float spriteSize = 0.4f;
   
-	// generate terrain
-	void Start () {
+  // generate terrain
+  void Start () {
     // loop to create sprites at world coordinates
     int startPos = 0 - worldSize/2;
     int endPos = worldSize/2 - 1;
@@ -19,7 +19,7 @@ public class TerrainGeneration : MonoBehaviour {
         CreateSprite(i, j);
       }
     }
-	}
+  }
   
   // used to create a new sprite game object at the specified coordinates
   void CreateSprite (int x, int y) {
